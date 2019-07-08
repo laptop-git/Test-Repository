@@ -23,11 +23,28 @@ int main() {
 		std::cout << val << ", ";
 
 	std::sort(vecVals.begin(), vecVals.end(),
-			[](int x, int y){return (x < y);});
+			[](int x, int y){ return (x < y); });
 
-	std::cout << "\n***************\n";
+	std::cout << "\n*****SORT******\n";
 	for(auto val: vecVals)
 		std::cout << val << ", ";
+
+	std::vector<int> evenVecVals;
+
+	std::copy_if(vecVals.begin(), vecVals.end(),
+			std::back_inserter(evenVecVals),
+			[](int x){ return (x % 2 == 0); });
+
+	std::cout << "\n*****EVEN******\n";
+	for(auto val: evenVecVals)
+		std::cout << val << ", ";
+
+	int iSum = 0;
+	std::for_each(vecVals.begin(), vecVals.end(),
+			[&](int x){ iSum += x; });
+	std::cout << "\n*****SUM******\n";
+	std::cout << "Sum = " << iSum;
+
 
 	return 0;
 }
